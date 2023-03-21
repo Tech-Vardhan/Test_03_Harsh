@@ -1,0 +1,87 @@
+<!-- <div *ngIf="add" class="container">
+    <h1>Create Program</h1>
+    <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
+      <input
+        class="form-control"
+        type="text"
+        placeholder="Program Name"
+        aria-label="default input example"
+        name="programName"
+        [(ngModel)]="programName"
+      />
+      <input
+        class="form-control"
+        type="text"
+        placeholder="Program Number"
+        aria-label="default input example"
+        name="programNumber"
+        [(ngModel)]="programNumber"
+      />
+      <input
+        class="form-control"
+        type="number"
+        placeholder="$Program Budget"
+        aria-label="default input example"
+        name="budget"
+        [(ngModel)]="programBudget"
+      />
+      <input
+        class="form-control"
+        type="text"
+        placeholder="Program Description"
+        aria-label="default input example"
+        name="description"
+        [(ngModel)]="programDescription"
+      />
+
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+  </div> -->
+
+<div class="container">
+  <h1>Edit Program</h1>
+  <h1>Edit Program</h1>
+  <form #form="ngForm">
+    <input
+      class="form-control"
+      type="text"
+      placeholder="Program Name"
+      aria-label="default input example"
+      name="programName"
+      [(ngModel)]="storeData.programName"
+    />
+    <input
+      class="form-control"
+      type="text"
+      placeholder="Program Number"
+      aria-label="default input example"
+      name="programNumber"
+      [(ngModel)]="storeData.programNumber"
+    />
+    <input
+      class="form-control"
+      type="number"
+      placeholder="$Program Budget"
+      aria-label="default input example"
+      name="budget"
+      [(ngModel)]="storeData.programBudget"
+    />
+    <input
+      class="form-control"
+      type="text"
+      placeholder="Program Description"
+      aria-label="default input example"
+      name="description"
+      [(ngModel)]="storeData.programDescription"
+    />
+
+    <button
+      class="btn btn-primary"
+      (click)="updateProgramData(storeData.programID, form.value)"
+      type="submit"
+    >
+      update
+    </button>
+    <button class="btn btn-primary" routerLink="../">Back</button>
+  </form>
+</div>

@@ -1,0 +1,49 @@
+<h1>DataGrid</h1>
+<h1>DataGrid</h1>
+
+<ejs-grid [dataSource]="ProgramData">
+  <e-columns>
+    <e-column
+      field="programName"
+      headerText="program Name"
+      textAlign="center"
+      width="90"
+    ></e-column>
+    <e-column
+      field="programNumber"
+      headerText="program Number"
+      width="120"
+    ></e-column>
+    <e-column
+      field="programBudget"
+      headerText="program Budget"
+      textAlign="center"
+      format="C2"
+      width="90"
+    ></e-column>
+    <e-column
+      field="programDescription"
+      headerText="Description"
+      textAlign="center"
+      format="yMd"
+      width="120"
+    ></e-column>
+    <e-column
+      field="isActive"
+      headerText="isActive"
+      textAlign="center"
+      format="yMd"
+      width="120"
+      ><ng-template #template let-data>
+        <button class="btn btn-primary" (click)="editData(data)">Edit</button>
+
+        <button
+          class="btn btn-secondary"
+          (click)="changeStatus(data.programID, data, data.isActive)"
+        >
+          {{ data.isActive ? "Activate" : "Deactivate" }}
+        </button>
+      </ng-template></e-column
+    >
+  </e-columns>
+</ejs-grid>
