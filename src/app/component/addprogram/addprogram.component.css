@@ -1,5 +1,18 @@
+* {
+  font-family: "Times New Roman", Times, serif;
+}
 .container {
   background-color: white;
   z-index: 20;
   border: 1px solid black;
+  margin-right: 70vh;
+  margin: inherit;
+  padding: 64px;
+}
+h3{
+  font-family: cursive;
+  color: blue;
+}
+input {
+  margin: 7px;
 }
