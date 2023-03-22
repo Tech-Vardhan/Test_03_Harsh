@@ -35,7 +35,9 @@
       format="yMd"
       width="120"
       ><ng-template #template let-data>
-        <button class="btn btn-primary" (click)="editData(data)">Edit</button>
+        <button class="btn btn-primary" id="edit" (click)="editData(data)">
+          Edit
+        </button>
 
         <button
           class="btn btn-secondary"
