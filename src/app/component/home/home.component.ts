@@ -25,15 +25,17 @@ export class HomeComponent {
     this.programService.storeData = data;
     this.programService.popupformvisibility.next(true);
     this.programService.isEditMode.next(true);
-    
   }
 
   changeStatus(programID: string, data: Program, isActive: boolean) {
-    this.programService
-      .chageStatus(programID, data, isActive)
-      .subscribe((res) => {
-        // console.log(res);
-      });
+    const confirmed = confirm('Are you sure you want to update the status?');
+    if (confirmed) {
+      this.programService
+        .chageStatus(programID, data, isActive)
+        .subscribe((res) => {
+          // console.log(res);
+        });
+    }
   }
   onaddProgram() {
     this.programService.popupformvisibility.next(true);

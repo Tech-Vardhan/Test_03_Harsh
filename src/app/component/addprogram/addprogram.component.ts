@@ -33,20 +33,28 @@ export class AddprogramComponent {
 
   ngOnInit() {
     this.storeData = this.programService.storeData;
-    
+
     console.log(this.programService.storeData);
-}
+  }
 
   onSubmit(data: any) {
     this.programService.addProgram(data).subscribe((res) => {
       console.log(res);
       alert('Successfull Added');
-      // window.location.reload()
+      window.location.reload();
     });
   }
   updateProgramData(programID: string, updateData: Program) {
-    updateData.programID = programID;
-    this.programService.updateData(programID, updateData).subscribe();
+    const confirmed = confirm('Are you sure you want to update the program?');
+    if (confirmed) {
+      updateData.programID = programID;
+      this.programService
+        .updateData(programID, updateData)
+        .subscribe((res) => {});
+      window.location.reload();
+    } else {
+      this.programService.popupformvisibility.next(false);
+    }
   }
   close() {
     this.programService.popupformvisibility.next(false);
