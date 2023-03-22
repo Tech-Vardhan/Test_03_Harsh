@@ -12,7 +12,7 @@ export class ProgramService {
   popupformvisibility = new BehaviorSubject<boolean>(false);
   ProgramsData = new BehaviorSubject<Program[]>([]);
   isEditMode = new BehaviorSubject<boolean>(false);
-  
+
   PostData: Program[] = [];
 
   programUrl = 'http://cmi-ofm.azurewebsites.net/api/Program';

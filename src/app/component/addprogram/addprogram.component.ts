@@ -38,20 +38,20 @@ export class AddprogramComponent {
   }
 
   onSubmit(data: any) {
+    console.log(data);
     this.programService.addProgram(data).subscribe((res) => {
-      console.log(res);
       alert('Successfull Added');
-      window.location.reload();
+      //window.location.reload();
     });
   }
   updateProgramData(programID: string, updateData: Program) {
     const confirmed = confirm('Are you sure you want to update the program?');
     if (confirmed) {
       updateData.programID = programID;
-      this.programService
-        .updateData(programID, updateData)
-        .subscribe((res) => {});
-      window.location.reload();
+      this.programService.updateData(programID, updateData).subscribe((res) => {
+        console.log(res);
+      });
+      // window.location.reload();
     } else {
       this.programService.popupformvisibility.next(false);
     }

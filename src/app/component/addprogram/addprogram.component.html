@@ -1,4 +1,3 @@
-
 <div class="container" *ngIf="!isEditMode.value">
   <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
     <h3>Create Program</h3>
@@ -23,7 +22,7 @@
       type="number"
       placeholder="$Program Budget"
       aria-label="default input example"
-      name="budget"
+      name="programBudget"
       [(ngModel)]="programBudget"
     />
     <input
@@ -31,11 +30,11 @@
       type="text"
       placeholder="Program Description"
       aria-label="default input example"
-      name="description"
+      name="programDescription"
       [(ngModel)]="programDescription"
     />
 
-    <button class="btn btn-primary" type="submit">Submit</button>
+    <button class="btn btn-primary" type="submit(form.value)">Submit</button>
     <button class="btn btn-primary" (click)="close()">close</button>
   </form>
 </div>
@@ -64,7 +63,7 @@
       type="number"
       placeholder="$Program Budget"
       aria-label="default input example"
-      name="budget"
+      name="programBudget"
       [(ngModel)]="storeData.programBudget"
     />
     <input
@@ -72,7 +71,7 @@
       type="text"
       placeholder="Program Description"
       aria-label="default input example"
-      name="description"
+      name="programDescription"
       [(ngModel)]="storeData.programDescription"
     />
 
