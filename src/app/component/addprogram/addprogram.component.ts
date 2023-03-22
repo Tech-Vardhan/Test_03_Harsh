@@ -41,7 +41,10 @@ export class AddprogramComponent {
     console.log(data);
     this.programService.addProgram(data).subscribe((res) => {
       alert('Successfull Added');
-      //window.location.reload();
+      setTimeout(() => {
+        console.log();
+        window.location.reload();
+      }, 2000);
     });
   }
   updateProgramData(programID: string, updateData: Program) {
@@ -50,8 +53,11 @@ export class AddprogramComponent {
       updateData.programID = programID;
       this.programService.updateData(programID, updateData).subscribe((res) => {
         console.log(res);
+        setTimeout(() => {
+          console.log();
+          window.location.reload();
+        }, 2000);
       });
-      // window.location.reload();
     } else {
       this.programService.popupformvisibility.next(false);
     }
