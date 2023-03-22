@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+
 import { ProgramService } from 'src/app/sharing/program.service';
 import { Program } from 'src/app/sharing/user';
-import { MatDialog,MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-home',
@@ -10,12 +9,8 @@ import { MatDialog,MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  constructor(
-    private programService: ProgramService,
-    private router: Router,
-    public dialog: MatDialog,
-    
-  ) {}
+  visibility = this.programService.popupformvisibility;
+  constructor(private programService: ProgramService) {}
 
   title = 'Test_3';
   ProgramData: Program[] = [];
@@ -28,8 +23,9 @@ export class HomeComponent {
 
   editData(data: Program) {
     this.programService.storeData = data;
-
-    this.router.navigate(['/add']);
+    this.programService.popupformvisibility.next(true);
+    this.programService.isEditMode.next(true);
+    
   }
 
   changeStatus(programID: string, data: Program, isActive: boolean) {
@@ -39,5 +35,8 @@ export class HomeComponent {
         // console.log(res);
       });
   }
- 
+  onaddProgram() {
+    this.programService.popupformvisibility.next(true);
+    this.programService.isEditMode.next(false);
+  }
 }

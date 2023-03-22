@@ -1,6 +1,6 @@
 import { Component, Inject, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 import { ProgramService } from 'src/app/sharing/program.service';
 import { Program } from 'src/app/sharing/user';
 
@@ -11,27 +11,19 @@ import { Program } from 'src/app/sharing/user';
 })
 export class AddprogramComponent {
   storeData: Program = {
-    programID:'',
-    programNumber:'',
-    programName:'',
-    programDescription:'',
-    canDelete:false,
-    isActive:false,
-    programBudget:0,
-     
+    programID: '',
+    programNumber: '',
+    programName: '',
+    programDescription: '',
+    canDelete: false,
+    isActive: false,
+    programBudget: 0,
+    isVirtual: false,
   };
   add: boolean = false;
-  isEditMode = false;
+  isEditMode = this.programService.isEditMode;
 
-  constructor(
-    private programService: ProgramService // public dialogRef: MatDialogRef<AddprogramComponent>,
-  ) // @Inject(MAT_DIALOG_DATA) public data: Program | undefined
-  {
-    // if (data) {
-    //   this.storeData = data;
-    //   this.isEditMode = true;
-    // }
-  }
+  constructor(private programService: ProgramService) {}
 
   @ViewChild('form') signupForm!: NgForm;
   programName = '';
@@ -41,17 +33,22 @@ export class AddprogramComponent {
 
   ngOnInit() {
     this.storeData = this.programService.storeData;
+    
     console.log(this.programService.storeData);
+}
+
+  onSubmit(data: any) {
+    this.programService.addProgram(data).subscribe((res) => {
+      console.log(res);
+      alert('Successfull Added');
+      // window.location.reload()
+    });
   }
-
-  // onSubmit(data: any) {
-  //   this.programService.postProgram(data).subscribe((res) => {
-  //     console.log(res);
-  //   });
-
-  //   // console.log(this.signupForm);
-  // }
   updateProgramData(programID: string, updateData: Program) {
+    updateData.programID = programID;
     this.programService.updateData(programID, updateData).subscribe();
+  }
+  close() {
+    this.programService.popupformvisibility.next(false);
   }
 }

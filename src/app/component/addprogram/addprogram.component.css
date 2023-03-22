@@ -1,1 +1,5 @@
-
+.container {
+  background-color: white;
+  z-index: 20;
+  border: 1px solid black;
+}

@@ -3,8 +3,8 @@ export interface Program {
   programNumber: string;
   programName: string;
   programDescription: string;
-  canDelete:false,
+  canDelete: boolean;
   isActive: boolean;
   programBudget: number;
-  
+  isVirtual: boolean;
 }
