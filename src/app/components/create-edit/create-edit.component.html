@@ -1,0 +1,74 @@
+<form [formGroup]="programForm" (ngSubmit)="onSubmit()">
+  <div mat-dialog-title>
+    {{ programData ? "Updateprogram" : "CreatProgram" }}
+  </div>
+  <div mat-dialog-content>
+    <section class="example-section" style="padding-top: 10px">
+      <mat-form-field appearance="outline">
+        <mat-label>Program Name</mat-label>
+        <input
+          matInput
+          #input
+          name="programName"
+          placeholder="Program Name"
+          formControlName="programName"
+        />
+        <!-- <mat-hint align="end">{{input.value.length}}/10</mat-hint> -->
+      </mat-form-field>
+    </section>
+    <section class="example-section">
+      <mat-form-field appearance="outline">
+        <mat-label>Program Number</mat-label>
+        <input
+          matInput
+          #input
+          maxlength="10"
+          name="programNumber"
+          placeholder="Program Number"
+          formControlName="programNumber"
+        />
+        <!-- <mat-hint align="end">{{input.value.length}}/10</mat-hint> -->
+      </mat-form-field>
+    </section>
+    <section class="example-section">
+      <mat-form-field appearance="outline">
+        <mat-label>Program budget</mat-label>
+        <input
+          matInput
+          #input
+          maxlength="10"
+          name="programBudget"
+          placeholder="Program Budget"
+          formControlName="programBudget"
+        />
+        <!-- <mat-hint align="end">{{input.value.length}}/10</mat-hint> -->
+      </mat-form-field>
+    </section>
+    <section class="example-section">
+      <mat-form-field appearance="outline">
+        <mat-label>Program description </mat-label>
+        <input
+          matInput
+          #input
+          name="programDescription"
+          placeholder="Program Description"
+          formControlName="programDescription"
+        />
+        <!-- <mat-hint align="end">{{input.value.length}}/10</mat-hint> -->
+      </mat-form-field>
+    </section>
+  </div>
+  <div mat-dialog-actions>
+    <button
+      mat-raised-button
+      color="primary"
+      [mat-dialog-close]="programForm"
+      ejs-button
+      type="submit"
+      style="margin-right: 16px"
+    >
+      {{ programData ? "Update" : "Create" }}
+    </button>
+    <button mat-raised-button color="primary" (click)="close()">close</button>
+  </div>
+</form>
