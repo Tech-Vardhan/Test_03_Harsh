@@ -1,71 +1,73 @@
 <button
-  mat-raised-button
-  color="primary"
-  type="button"
-  (click)="openDialog()"
-  style="margin-bottom: 8px"
+mat-raised-button
+color="primary"
+type="button"
+(click)="openDialog()"
+style="margin-bottom: 8px"
 >
-  Add Program
+Add Program
 </button>
 <ejs-grid #grid [dataSource]="programs" height="100%">
   <e-columns>
     <e-column
-      field="programName"
-      headerText="Name"
+    field="programName"
+    headerText="Name"
       textAlign="center"
       width="90"
     ></e-column>
     <e-column
-      field="programNumber"
-      headerText="Program Number"
-      isPrimaryKey="true"
-      textAlign="center"
-      width="90"
+    field="programNumber"
+    headerText="Program Number"
+    isPrimaryKey="true"
+    textAlign="center"
+    width="90"
     ></e-column>
     <e-column
-      field="programBudget"
-      headerText="Program Budget"
-      textAlign="center"
-      width="90"
+    field="programBudget"
+    headerText="Program Budget"
+    textAlign="center"
+    width="90"
     ></e-column>
     <e-column
-      field="programDescription"
-      headerText="Description"
-      textAlign="center"
-      width="90"
+    field="programDescription"
+    headerText="Description"
+    textAlign="center"
+    width="90"
     ></e-column>
     <e-column
-      field="isActive"
-      headerText="Action"
-      textAlign="center"
-      width="90"
+    field="isActive"
+    headerText="Action"
+    textAlign="center"
+    width="90"
     >
-      <ng-template #template let-data>
+    <ng-template #template let-data>
+      <button
+      mat-raised-button
+      color="primary"
+      class="edit btn"
+      (click)="onEdit(data)"
+      >
+      Edit
+    </button>
         <button
-          mat-raised-button
-          color="primary"
-          class="edit btn"
-          (click)="onEdit(data)"
-        >
-          Edit
-        </button>
-        <button
-          mat-raised-button
-          color="Accent"
+        mat-raised-button
+        color="Accent"
           (click)="onStatusChange(data)"
           *ngIf="data.isActive"
         >
           Active
         </button>
         <button
-          mat-raised-button
-          color="Accent"
-          (click)="onStatusChange(data)"
-          *ngIf="!data.isActive"
+        mat-raised-button
+        color="Accent"
+        (click)="onStatusChange(data)"
+        *ngIf="!data.isActive"
         >
-          Deactive
-        </button>
-      </ng-template>
-    </e-column>
-  </e-columns>
+        Deactive
+      </button>
+    </ng-template>
+  </e-column>
+</e-columns>
 </ejs-grid>
+
+<!-- <app-create-edit updatedata=  ></app-create-edit> -->

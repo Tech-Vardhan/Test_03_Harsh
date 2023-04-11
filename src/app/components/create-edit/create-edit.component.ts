@@ -1,4 +1,4 @@
-import { Component, Inject, Input, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Program } from 'src/app/share/program.model';
@@ -12,7 +12,8 @@ import { ProgramService } from 'src/app/share/program.service';
 })
 export class CreateEditComponent {
   programForm: FormGroup;
-
+  @Output()updateData = new EventEmitter<string>()
+  isMode = false
   // @ViewChild('comp') child: ProgramListComponent | undefined;
   constructor(
     private form: FormBuilder,
@@ -52,6 +53,11 @@ export class CreateEditComponent {
     if (this.programForm.valid) {
       if (!this.programData) {
         this.programService.addProgram(this.programForm.value).subscribe();
+        this.programService.getListSubject.subscribe((res) => {
+          console.log(res);
+          console.log('subject called');  
+          // this.updateData.emit()
+        });
       } else {
         this.programService
           .updateData(this.programForm.value)

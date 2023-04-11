@@ -14,8 +14,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
+import { ChartComponent } from './components/chart/chart.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 @NgModule({
-  declarations: [AppComponent, ProgramListComponent, CreateEditComponent],
+  declarations: [
+    AppComponent,
+    ProgramListComponent,
+    CreateEditComponent,
+    ChartComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -30,6 +37,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     MatCheckboxModule,
     MatButtonModule,
+    NgMultiSelectDropDownModule.forRoot(),
   ],
   providers: [
     {

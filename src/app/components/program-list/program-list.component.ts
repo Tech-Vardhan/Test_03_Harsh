@@ -12,6 +12,7 @@ import { CreateEditComponent } from '../create-edit/create-edit.component';
 })
 export class ProgramListComponent {
   programs: Program[] = [];
+  testmode: boolean = false;
 
   @ViewChild('grid') grid: GridComponent | undefined;
 
@@ -20,13 +21,18 @@ export class ProgramListComponent {
     private _dialog: MatDialog
   ) {
     this.FetchData();
+    this._programService.isMode.subscribe((res) => {
+      this.testmode = res;
+    });
   }
+
   ngOnInit() {}
+  // test = this._programService.isMode().
 
   openDialog() {
     const dialogRef = this._dialog.open(CreateEditComponent);
     dialogRef.afterClosed().subscribe((result: object) => {
-      console.log('The add dialog was closed');
+      // console.log('The add dialog was closed');
       this._programService.getAllPrograms().subscribe((res) => {
         this.programs = res;
       });
@@ -50,7 +56,7 @@ export class ProgramListComponent {
         this.FetchData();
       });
     } else {
-      console.log('deactive');
+      // console.log('deactive');
 
       this._programService.updateStatusTodeactivate(data).subscribe((res) => {
         this.FetchData();
