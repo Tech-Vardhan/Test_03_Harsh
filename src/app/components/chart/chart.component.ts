@@ -89,7 +89,7 @@ export class ChartComponent {
       this.dropdownList = res.documentList;
     });
   }
-  
+
   onItemSelect(item: any) {
     // debugger;
     if (this.dropdownList && this.dropdownList.length > 0) {
